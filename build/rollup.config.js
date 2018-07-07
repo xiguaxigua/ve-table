@@ -47,12 +47,14 @@ compList.forEach(item => {
 
   rollup.rollup({
     input: item.entry,
+    external: id => /^numerify/.test(id),
     plugins
   }).then(bundle => {
     bundle.write({
       format: item.type,
       name: item.name,
-      file: item.dist
+      file: item.dist,
+      globals: { 'numerify': 'numerify' }
     })
   }).catch((e) => {
     console.log(e)

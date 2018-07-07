@@ -1,11 +1,11 @@
-import Component from './component'
+import VeTable from './ve-table'
 
 function install (Vue, _) {
-  Vue.component('Component', Component)
+  Vue.component(VeTable.name, VeTable)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default Component
+export default VeTable
