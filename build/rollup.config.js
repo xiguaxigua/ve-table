@@ -1,40 +1,25 @@
 const rollup = require('rollup')
-const vue = require('rollup-plugin-vue')
+const vue = require('rollup-plugin-vue').default
 const resolve = require('rollup-plugin-node-resolve')
 const babel = require('rollup-plugin-babel')
 const eslint = require('rollup-plugin-eslint')
 const uglify = require('rollup-plugin-uglify')
-const postcss = require('rollup-plugin-postcss')
 const compList = require('./components')
 const minify = require('uglify-es').minify
-const shell = require('shelljs')
+const css = require('rollup-plugin-css-only')
 const autoprefixer = require('autoprefixer')
 
-shell.mkdir('lib')
-shell.cp('-r', 'src/asserts', 'lib/asserts')
-
 compList.forEach(item => {
-  let vueSettings = {}
-  if (item.css) {
-    vueSettings = {
-      css: item.css,
-      scss: {
-        outputStyle: item.min ? 'compressed' : 'expanded'
-      },
-      postcss: {
-        plugins: [autoprefixer]
-      }
-    }
-  }
   var plugins = [
     eslint({
       throwError: true,
       exclude: 'node_modules/**'
     }),
-    vue(vueSettings),
-    postcss({
-      plugins: [autoprefixer]
+    vue({
+      css: false,
+      style: { postcssPlugins: [autoprefixer] }
     }),
+    css({ output: 'lib/style.css' }),
     resolve({
       extensions: ['.js', '.vue']
     }),
