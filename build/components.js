@@ -26,7 +26,7 @@ module.exports = [
     type: 'umd',
     min: false,
     css: 'lib/style.css',
-    name: 'componentGlobalName'
+    name: 'VeTable'
   },
   {
     entry: 'src/index.js',
@@ -34,6 +34,6 @@ module.exports = [
     type: 'umd',
     min: true,
     css: 'lib/style.min.css',
-    name: 'componentGlobalName'
+    name: 'VeTable'
   }
 ]
