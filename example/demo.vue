@@ -15,6 +15,11 @@
         slot-scope="{ value }">
         {{ value }} !
       </div>
+      <div
+        slot="__expand"
+        slot-scope="{ row }">
+        {{ row['date'] }}
+      </div>
     </ve-table>
   </div>
 </template>
@@ -27,7 +32,10 @@ export default {
   components: { VeTable },
   props: {},
   data () {
-    this.tableSettings = {}
+    this.tableSettings = {
+      __expand: true,
+      border: true
+    }
     this.paginationSettings = {
       show: true
     }

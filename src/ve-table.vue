@@ -24,6 +24,15 @@
           </div>
         </template>
       </el-table-column>
+      <el-table-column
+        v-if="settings.__expand"
+        type="expand">
+        <template slot-scope="{ row }">
+          <slot
+            :row="row"
+            name="__expand"/>
+        </template>
+      </el-table-column>
     </el-table>
     <el-pagination
       v-if="paginationVisible"
