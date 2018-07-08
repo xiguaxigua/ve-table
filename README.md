@@ -1,6 +1,6 @@
 ## ve-table
 
-> 基于 element-ui table 组件封装的表格组件
+> 基于 element-ui table 组件封装的表格组件, 同时支持 element-ui 1.x 与 2.x 版本的全部功能。
 
 [![NPM downloads](http://img.shields.io/npm/dm/ve-table.svg)](https://npmjs.org/package/ve-table)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/ve-table/lib/index.min.js?compression=gzip&label=gzip%20size:%20JS)

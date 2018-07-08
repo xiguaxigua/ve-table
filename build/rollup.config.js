@@ -22,9 +22,7 @@ compList.forEach(item => {
     }),
     common(),
     css({ output: 'lib/style.css' }),
-    resolve({
-      extensions: ['.js', '.vue']
-    }),
+    resolve({ extensions: ['.js', '.vue'] }),
     babel({
       exclude: 'node_modules/**',
       plugins: ['external-helpers']
