@@ -16,7 +16,7 @@
             :column="column"
             :value="row[column.prop]"
             :name="column.__slot" />
-          <div v-else-if="column.__type === 'value'">
+          <div v-else-if="column.__type === 'number'">
             {{ getValue(row[column.prop], column.__format) }}
           </div>
           <div v-else>
