@@ -1,6 +1,10 @@
 <template>
-  <div class="component">
+  <div class="ve-table">
+    <slot
+      v-if="settings.__tableSlot"
+      :name="settings.__tableSlot" />
     <el-table
+      v-else
       ref="table"
       :data="data"
       v-bind="settings"
@@ -70,12 +74,12 @@ export default {
 
   props: {
     data: {
-      required: true,
-      type: Array
+      type: Array,
+      default () { return [] }
     },
     columns: {
-      required: true,
-      type: Array
+      type: Array,
+      default () { return [] }
     },
     keyProp: {
       type: String,

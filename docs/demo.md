@@ -223,19 +223,58 @@ export default {
 </script>
 ```
 
-<!-- ## 多级表头 -->
+## 多级表头
 
-<!-- ```html
+```html
 /*vue*/
 <desc>
 </desc>
 <template>
   <div>
     <div className='wrapper'>
-      <ve-table :data="tableData" :columns="tableColumns">
-        <el-table-column slot="mixinHeader" label="名称" prop="name"></el-table-column>
-        <el-table-column label="地址" prop="address"></el-table-column>
-        <el-table-column label="数值" prop="num"></el-table-column>
+      <ve-table
+        :total="100"
+        pagination-visible
+        :settings="settings">
+        <el-table
+          slot="table"
+          :data="tableData"
+          style="width: 100%">
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="150">
+          </el-table-column>
+          <el-table-column label="配送信息">
+            <el-table-column
+              prop="name"
+              label="姓名"
+              width="120">
+            </el-table-column>
+            <el-table-column label="地址">
+              <el-table-column
+                prop="province"
+                label="省份"
+                width="120">
+              </el-table-column>
+              <el-table-column
+                prop="city"
+                label="市区"
+                width="120">
+              </el-table-column>
+              <el-table-column
+                prop="address"
+                label="地址"
+                width="300">
+              </el-table-column>
+              <el-table-column
+                prop="zip"
+                label="邮编"
+                width="120">
+              </el-table-column>
+            </el-table-column>
+          </el-table-column>
+        </el-table>
       </ve-table>
     </div>
   </div>
@@ -250,17 +289,16 @@ const tableData = [
 ]
 export default {
   data () {
+    this.settings = {
+      __tableSlot: 'table'
+    }
     return {
-      tableData,
-      tableColumns: [
-        { label: '日期', prop: 'date', width: 200, fixed: true },
-        { label: '合并', __slot: 'mixinHeader' }
-      ]
+      tableData
     }
   }
 }
 </script>
-``` -->
+```
 
 ## 单选
 

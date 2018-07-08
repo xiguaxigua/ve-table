@@ -1,24 +1,46 @@
 <template>
   <div class="page-demo">
-    <ve-table
-      :data="tableData"
-      :columns="tableColumns"
-      :settings="tableSettings"
-      :pagination="paginationSettings"
-      :page.sync="page"
-      :page-size.sync="pageSize"
-      :total="40"
-      pagination-visible
-      @cell-click="cellClickHandler">
-      <div
-        slot="date"
-        slot-scope="{ value }">
-        {{ value }} !
-      </div>
-      <div
-        slot="__expand"
-        slot-scope="{ row }">
-        {{ row['date'] }}
+    <ve-table :settings="tableSettings">
+      <div slot="table">
+        <!-- eslint-disable -->
+        <el-table
+          :data="tableData"
+          style="width: 100%">
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="150">
+          </el-table-column>
+          <el-table-column label="配送信息">
+            <el-table-column
+              prop="name"
+              label="姓名"
+              width="120">
+            </el-table-column>
+            <el-table-column label="地址">
+              <el-table-column
+                prop="province"
+                label="省份"
+                width="120">
+              </el-table-column>
+              <el-table-column
+                prop="city"
+                label="市区"
+                width="120">
+              </el-table-column>
+              <el-table-column
+                prop="address"
+                label="地址"
+                width="300">
+              </el-table-column>
+              <el-table-column
+                prop="zip"
+                label="邮编"
+                width="120">
+              </el-table-column>
+            </el-table-column>
+          </el-table-column>
+        </el-table>
       </div>
     </ve-table>
   </div>
@@ -26,15 +48,22 @@
 
 <script>
 import VeTable from '../src/ve-table'
+import ElTable from 'element-ui/lib/table'
+import ElTableColumn from 'element-ui/lib/table-column'
 
 export default {
   name: 'Demo',
-  components: { VeTable },
+  components: {
+    ElTable,
+    ElTableColumn,
+    VeTable
+  },
   props: {},
   data () {
     this.tableSettings = {
       __expand: true,
-      border: true
+      border: true,
+      __tableSlot: 'table'
     }
     this.paginationSettings = {
       show: true
