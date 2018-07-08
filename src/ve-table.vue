@@ -26,7 +26,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
-      v-if="pagination.show"
+      v-if="paginationVisible"
       v-bind="pagination"
       :layout="innerLayout"
       :page-sizes="innerPageSizes"
@@ -82,6 +82,10 @@ export default {
     valueFormat: {
       type: Function,
       default: null
+    },
+    paginationVisible: {
+      type: Boolean,
+      default: false
     }
   },
 

@@ -8,6 +8,7 @@
       :page.sync="page"
       :page-size.sync="pageSize"
       :total="40"
+      pagination-visible
       @cell-click="cellClickHandler">
       <div
         slot="date"
