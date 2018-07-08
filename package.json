@@ -19,6 +19,9 @@
   "keywords": [],
   "author": "xiguaxigua xiguaxigua888@gmail.com",
   "license": "MIT",
+  "peerDependencies": {
+    "element-ui": "*"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
     "babel-core": "^6.26.0",

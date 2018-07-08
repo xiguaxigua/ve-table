@@ -6,6 +6,10 @@
       v-bind="settings"
       v-on="$listeners">
       <el-table-column
+        v-if="settings.__showCheckbox"
+        :width="settings.__checkboxWidth || 55"
+        type="selection" />
+      <el-table-column
         v-for="column in innerColumns"
         v-bind="column"
         :key="column.__id">
@@ -16,10 +20,10 @@
             :column="column"
             :value="row[column.prop]"
             :name="column.__slot" />
-          <div v-else-if="column.__type === 'number'">
+          <div v-else-if="column.__type === 'number' && column.prop != null">
             {{ getValue(row[column.prop], column.__format) }}
           </div>
-          <div v-else>
+          <div v-else-if="column.prop != null">
             {{ row[column.prop] }}
           </div>
         </template>
@@ -51,9 +55,18 @@
 <script>
 import { isObject, clone } from 'utils-lite'
 import numerify from 'numerify'
+import ElTable from 'element-ui/lib/table'
+import ElTableColumn from 'element-ui/lib/table-column'
+import ElPagination from 'element-ui/lib/pagination'
 
 export default {
   name: 'VeTable',
+
+  components: {
+    ElTable,
+    ElTableColumn,
+    ElPagination
+  },
 
   props: {
     data: {

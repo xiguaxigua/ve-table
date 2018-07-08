@@ -7,6 +7,7 @@ const uglify = require('rollup-plugin-uglify')
 const compList = require('./components')
 const minify = require('uglify-es').minify
 const css = require('rollup-plugin-css-only')
+const common = require('rollup-plugin-commonjs')
 const autoprefixer = require('autoprefixer')
 
 compList.forEach(item => {
@@ -19,6 +20,7 @@ compList.forEach(item => {
       css: false,
       style: { postcssPlugins: [autoprefixer] }
     }),
+    common(),
     css({ output: 'lib/style.css' }),
     resolve({
       extensions: ['.js', '.vue']
@@ -32,14 +34,19 @@ compList.forEach(item => {
 
   rollup.rollup({
     input: item.entry,
-    external: id => /^numerify/.test(id),
+    external: id => /^(numerify|element-ui)/.test(id),
     plugins
   }).then(bundle => {
     bundle.write({
       format: item.type,
       name: item.name,
       file: item.dist,
-      globals: { 'numerify': 'numerify' }
+      globals: {
+        'numerify': 'numerify',
+        'element-ui/lib/table': 'ELEMENT.Table',
+        'element-ui/lib/table-column': 'ELEMENT.TableColumn',
+        'element-ui/lib/pagination': 'ELEMENT.Pagination'
+      }
     })
   }).catch((e) => {
     console.log(e)
