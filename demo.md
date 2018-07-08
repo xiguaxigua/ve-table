@@ -228,6 +228,7 @@ export default {
 ```html
 /*vue*/
 <desc>
+只需要在 el-table-column 里面嵌套 el-table-column，就可以实现多级表头。
 </desc>
 <template>
   <div>
