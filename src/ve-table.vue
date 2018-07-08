@@ -14,6 +14,7 @@
             v-if="column.__slot"
             :row="row"
             :column="column"
+            :value="row[column.prop]"
             :name="column.__slot" />
           <div v-else-if="column.__type === 'value'">
             {{ getValue(row[column.prop], column.__format) }}

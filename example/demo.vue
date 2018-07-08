@@ -11,8 +11,8 @@
       @cell-click="cellClickHandler">
       <div
         slot="date"
-        slot-scope="{ row, column }">
-        {{ row[column.prop] }} !
+        slot-scope="{ value }">
+        {{ value }} !
       </div>
     </ve-table>
   </div>
