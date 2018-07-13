@@ -238,7 +238,7 @@ export default {
         pagination-visible
         :settings="settings">
         <el-table
-          slot="table"
+          slot="__tableSlot"
           :data="tableData"
           style="width: 100%">
           <el-table-column

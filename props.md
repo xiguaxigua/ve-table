@@ -201,7 +201,7 @@ export default {
 | -- | -- | -- | -- |
 | __expand | 是否增加展开行 | boolean | false |
 | __sortMethod | 统一的排序方法 | function | - |
-| __tableSlot | 用于替代默认 el-table 的 slot 名称 | string | - |
+| __tableSlot | 是否使用替代默认 el-table 的 slot | boolean | - |
 
 `__expend` 属性配置在表格中增加 `slot="__expend"` 的节点即可实现展开行功能。
 
@@ -305,7 +305,7 @@ export default {
       :pagination="pagination"
       :total="20"
       :columns="tableColumns">
-      <a href="javascript:void(0)" slot="_paginationSlot">下载</a>
+      <a href="javascript:void(0)" slot="__paginationSlot">下载</a>
     </ve-table>
   </div>
 </template>
